@@ -1,0 +1,13 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch
+
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    install_packages apt-utils wget vim tar gzip && \
+    wget -qO - https://github.com/prometheus/prometheus/releases/download/v2.15.2/prometheus-2.15.2.linux-arm64.tar.gz > prometheus.tar.gz  && \
+    tar zxf prometheus.tar.gz && \
+    mv prometheus-* prometheus
+
+
+VOLUME /etc/prometheus
+COPY prometheus.yml /etc/prometheus/prometheus.yml 
+
+CMD ["./prometheus/prometheus", "--config.file=/etc/prometheus/prometheus.yml"]

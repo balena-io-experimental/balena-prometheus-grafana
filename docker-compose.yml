@@ -1,0 +1,39 @@
+version: "2.0"
+services:
+  prometheus:
+    build: ./prometheus
+    ports:
+      - "9090:9090"
+      - "9100:9100"
+    networks:
+      - frontend
+      - backend
+    depends_on: 
+      - node_exporter
+    container_name: prometheus
+  grafana:
+    image: grafana/grafana
+    ports: 
+      - "3000:3000"
+    networks:
+        - frontend
+        - backend
+    volumes:
+        - grafana_etc:/etc/grafana
+        - grafana_usr:/usr/share/grafana 
+        - grafana_var:/var/lib/grafana
+    container_name: grafana
+  node_exporter:
+    build: ./node_exporter
+    networks:
+        - backend
+    container_name: node_exporter
+
+networks:
+    frontend:
+    backend:
+
+volumes:
+    grafana_etc:
+    grafana_usr:
+    grafana_var:
