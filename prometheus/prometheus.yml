@@ -23,4 +23,5 @@ scrape_configs:
     - targets:
       - node_exporter:9100
       - 10.128.1.134:9100
+      - 10.128.1.211:9100
 

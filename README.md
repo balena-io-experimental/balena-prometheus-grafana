@@ -48,7 +48,7 @@ scrape_configs:
 
 Two networks are used. The _frontend_ network enables external connections to ports 3000, 9090 and 9100 on the Prometheus service to enable requests to and from Grafana (3000), Prometheus (9090) and Node Exporter (9100). The _backend_ network enables the local name resolution of _node_exporter_. However, all networks could be set as _network_mode: host_ for simplicity, and on other devices that aren't resolvable on the Prometheus/Grafana node.
 
-Note that the architecture of Prometheus and Node Exporter are currently hard-coded into versions of each Docker image is defined in each _Dockerfile.template_. These should be updated with the appropriate version for your architecture. RPi 3 requires _armv7_. Pi4 and NUC devices should use _arm64_. 
+Note that the architecture of Prometheus and Node Exporter are set as an "ARCH" argument defined in each _Dockerfile.template_. This should be updated with the appropriate version for your architecture. RPi 3 requires _armv7_. Pi4 and NUC devices should use _arm64_. 
 
 In order to add monitoring of other devices, add the following to its separate _docker-compose.yml_ file:
 
@@ -66,10 +66,12 @@ Secondly, add the ./node_exporter folder to that application, with a Dockerfile.
 ```
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch
 
+ARG ARCH="armv7"
+
 RUN install_packages apt-utils wget tar gzip
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
-    wget -qO - https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-armv7.tar.gz > node_exporter.tar.gz && \
+    wget -qO - https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-${ARCH}.tar.gz > node_exporter.tar.gz && \
     tar zxf node_exporter.tar.gz && \
     mv node_exporter-* node_exporter && \
     cp node_exporter/node_exporter /bin 
@@ -78,7 +80,7 @@ EXPOSE      9100
 
 CMD  [ "/bin/node_exporter" ]
 ```
-Be sure to adjust the _armv7_ bit in the wget path to suit your device.
+Be sure to adjust the _armv7_ ARG to suit your device.
 
 ### Deploy
 Clone this repository, change into the balenaLamp directory and push to your application:
