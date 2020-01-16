@@ -2,7 +2,7 @@ balenaCloud Prometheus and Grafana
 ===================================
 
 ### Introduction
-This project creates an application running Prometheus, Grafana and Node Exporter and can self-monitor. To add additional node targets, simply add the _node_exporter_ folder to any other project and update its _docker-compose.yml_ file and add the target to the _prometheus.yml_ file, as shown below.
+This project creates an application running Prometheus, Grafana and Node Exporter and can self-monitor. To add additional node targets, simply add the _node_exporter_ folder to any other project and update its _docker-compose.yml_ file to add its IP address (_host:9100_) to the _node_exporter_ targets in the _prometheus.yml_ file, as shown in __Monitor other devices__ below.
 
 ```
 /balena-grafana/
@@ -50,6 +50,7 @@ Two networks are used. The _frontend_ network enables external connections to po
 
 Note that the architecture of Prometheus and Node Exporter are set as an "ARCH" argument defined in each _Dockerfile.template_. This should be updated with the appropriate version for your architecture. RPi 3 requires _armv7_. Pi4 and NUC devices should use _arm64_. 
 
+### Monitor other devices
 In order to add monitoring of other devices, add the following to its separate _docker-compose.yml_ file:
 
 ```
