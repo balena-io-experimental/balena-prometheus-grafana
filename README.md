@@ -69,7 +69,7 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch
 RUN install_packages apt-utils wget tar gzip
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
-    wget -O - https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-armv7.tar.gz > node_exporter.tar.gz && \
+    wget -qO - https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-armv7.tar.gz > node_exporter.tar.gz && \
     tar zxf node_exporter.tar.gz && \
     mv node_exporter-* node_exporter && \
     cp node_exporter/node_exporter /bin 
