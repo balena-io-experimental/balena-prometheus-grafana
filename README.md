@@ -76,9 +76,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     mv node_exporter-* node_exporter && \
     cp node_exporter/node_exporter /bin 
 
-EXPOSE      9100
+EXPOSE 9100
 
-CMD  [ "/bin/node_exporter" ]
+CMD [ "/bin/node_exporter" ]
 ```
 Be sure to adjust the _armv7_ ARG to suit your device.
 
