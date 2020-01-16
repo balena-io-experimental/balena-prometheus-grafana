@@ -86,8 +86,8 @@ Be sure to adjust the _armv7_ ARG to suit your device.
 Clone this repository, change into the balenaLamp directory and push to your application:
 
 ```
- $ git clone git@github.com:jtonello/balena-dashboard.git
- $ cd balena-dashboard
+ $ git clone git@github.com:jtonello/balena-grafana.git
+ $ cd balena-grafana
  $ balena push <appname>
 ```
 
