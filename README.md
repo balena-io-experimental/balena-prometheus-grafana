@@ -94,5 +94,6 @@ Clone this repository, change into the balenaLamp directory and push to your app
  $ cd balena-grafana
  $ balena push <appname>
 ```
-
-
+### Helpful references
+* [How to Integrate Grafana with Prometheus for Monitoring](https://www.linuxtechi.com/integrate-grafana-prometheus-monitoring/)
+* [How to Install Prometheus](https://www.linuxtechi.com/install-prometheus-monitoring-tool-centos-8-rhel-8/)
