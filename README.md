@@ -91,7 +91,7 @@ Finally, add a new entry in the balenaCloud Device Variables for the application
 Each target address will show up in your Prometheus targets, [http://prometheus-IP/targets](#).
 
 ### Deploy
-Clone this repository, change into the balenaLamp directory and push to your application:
+Clone this repository, change into the balena-grafana directory and push to your application:
 
 ```
  $ git clone git@github.com:jtonello/balena-grafana.git
