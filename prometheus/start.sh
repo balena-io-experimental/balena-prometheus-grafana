@@ -1,9 +1,10 @@
 #!/bin/bash
 
 echo $TARGETS > targets
+sed -i "s/ //g"
 sed -ie "s/^/\\\'/g" targets
 sed -ie "s/$/\\\'/g" targets
-sed -ie "s/, /\\\',\\\'/g" targets
+sed -ie "s/,/\\\',\\\'/g" targets
 
 sed -i "s/\['node_exporter:9100'\]/TARGETS/g" /etc/prometheus/prometheus.yml
 
