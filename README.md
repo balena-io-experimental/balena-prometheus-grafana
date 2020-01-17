@@ -14,6 +14,7 @@ This project creates an application running Prometheus, Grafana and Node Exporte
 ├── prometheus
 │   ├── Dockerfile.template
 │   └── prometheus.yml
+│   └── shart.sh
 ├── docker-compose.yml
 ├── README.md
 ```
@@ -43,10 +44,7 @@ scrape_configs:
     metrics_path: /metrics
     scheme: http
     static_configs:
-    - targets:
-      - node_exporter:9100
-      - 10.128.1.134:9100
-      - 10.128.1.211:9100
+    - targets: ['node_exporter:9100']
 ```      
 
 Two networks are used. The _frontend_ network enables external connections to ports 3000, 9090 and 9100 on the Prometheus service to enable requests to and from Grafana (3000), Prometheus (9090) and Node Exporter (9100). The _backend_ network enables the local name resolution of _node_exporter_. However, all networks could be set as _network_mode: host_ for simplicity, and on other devices that aren't resolvable on the Prometheus/Grafana node.
@@ -85,6 +83,12 @@ EXPOSE 9100
 CMD [ "/bin/node_exporter" ]
 ```
 Be sure to adjust the _armv7_ ARG to suit your device.
+
+Finally, add a new entry in the Device Variables for the application with Prometheus and Grafana. Add the variable _TARGETS_ and enter the host IP addresses and ports, such as 10.128.1.134:9100, 10.128.1.211:9100, etc. Spaces are optional.
+
+![Add a device variable](http://tonellolabs.com/grafana_env_var.png)
+
+Each target address will show up in your Prometheus targets, http://prometheus-IP/targets.
 
 ### Deploy
 Clone this repository, change into the balenaLamp directory and push to your application:
