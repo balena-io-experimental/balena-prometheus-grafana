@@ -98,6 +98,13 @@ Clone this repository, change into the balena-grafana directory and push to your
  $ cd balena-grafana
  $ balena push <appname>
 ```
+### Configure dashboard
+In order to start viewing system data, log in to the Grafana dashboard at _device-host-ip:3000_ with admin/admin. Set a password. On the main page:
+* Add the datasource "Prometheus" with the path http://prometheus:9090. Click _Test and Save_.
+* When successful, click the + sign and choose "Import". Paste this URL in the _Grafana.com Dashboard_ field: https://grafana.com/grafana/dashboards/11074
+* Give the dashboard a name (if you want to change the default) and In _Prometheus Data Source_, select "Prometheus".
+* Click "Import (Overwrite)"
+
 ### Helpful references
 * [How to Integrate Grafana with Prometheus for Monitoring](https://www.linuxtechi.com/integrate-grafana-prometheus-monitoring/)
 * [How to Install Prometheus](https://www.linuxtechi.com/install-prometheus-monitoring-tool-centos-8-rhel-8/)
