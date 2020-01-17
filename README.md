@@ -84,7 +84,7 @@ CMD [ "/bin/node_exporter" ]
 ```
 Be sure to adjust the _armv7_ ARG to suit your device.
 
-Finally, add a new entry in the Device Variables for the application with Prometheus and Grafana. Add the variable _TARGETS_ and enter the host IP addresses and ports, such as 10.128.1.134:9100, 10.128.1.211:9100, etc. Spaces are optional.
+Finally, add a new entry in the balenaCloud Device Variables for the application running Prometheus (and Grafana). Add the variable _TARGETS_ and enter values that are the host IP addresses and ports of the devices you want to monitor, such as _10.128.1.134:9100, 10.128.1.211:9100_, etc. Spaces are optional.
 
 ![Add a device variable](http://tonellolabs.com/grafana_env_var.png)
 
