@@ -88,7 +88,7 @@ Finally, add a new entry in the balenaCloud Device Variables for the application
 
 ![Add a device variable](http://tonellolabs.com/grafana_env_var.png)
 
-Each target address will show up in your Prometheus targets, http://prometheus-IP/targets.
+Each target address will show up in your Prometheus targets, [http://prometheus-IP/targets](#).
 
 ### Deploy
 Clone this repository, change into the balenaLamp directory and push to your application:
