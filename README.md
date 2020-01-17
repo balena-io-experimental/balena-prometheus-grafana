@@ -2,7 +2,7 @@ balenaCloud Prometheus and Grafana
 ===================================
 
 ### Introduction
-This project creates an application running Prometheus, Grafana and Node Exporter and can self-monitor. To add additional node targets, simply add the _node_exporter_ folder to any other project and update its _docker-compose.yml_ file to add its IP address (_host:9100_) to the _node_exporter_ targets in the _prometheus.yml_ file, as shown in __Monitor other devices__ below.
+This project creates an application running Prometheus, Grafana and Node Exporter and can self-monitor. To add additional node targets, simply add the _node_exporter_ folder to any other project and add a Device Environment variable via the balenaCloud dashboard to update the _docker-compose.yml_ file, as shown in __Monitor other devices__ below.
 
 ![Dashboard](http://tonellolabs.com/grafana_dashboard.png)
 
