@@ -1,7 +1,7 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch
 
 # Set the correct architecture for your device
-ARG ARCH="amd64"
+ARG ARCH="armv7"
 
 # Install Prometheus
 RUN export DEBIAN_FRONTEND=noninteractive && \
