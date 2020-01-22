@@ -66,23 +66,18 @@ In order to add monitoring of other devices, add the following to its separate _
 Secondly, add the ./node_exporter folder to that application, with a Dockerfile.template that looks like this:
 
 ```
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine
+WORKDIR /app
 
-ARG ARCH="armv7"
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
+    apk add --no-cache prometheus-node-exporter
 
-RUN install_packages apt-utils wget tar gzip
-
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    wget -qO - https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-${ARCH}.tar.gz > node_exporter.tar.gz && \
-    tar zxf node_exporter.tar.gz && \
-    mv node_exporter-* node_exporter && \
-    cp node_exporter/node_exporter /bin 
-
+# Expose the port Prometheus uses
 EXPOSE 9100
 
-CMD [ "/bin/node_exporter" ]
+# Start Node Exporter
+CMD [ "/usr/bin/node_exporter" ]
 ```
-Be sure to adjust the _armv7_ ARG to suit your device.
 
 Finally, add a new entry in the balenaCloud Device Variables for the application running Prometheus (and Grafana). Add the variable _TARGETS_ and enter values that are the host IP addresses and ports of the devices you want to monitor, such as _10.128.1.134:9100, 10.128.1.211:9100_, etc. Spaces are optional.
 
