@@ -8,7 +8,7 @@ This project creates an application running Prometheus, Grafana and Node Exporte
 
 
 ```
-/balena-grafana/
+/balena-prometheus-grafana/
 ├── node_exporter
 │   ├── Dockerfile.template
 ├── prometheus
@@ -86,10 +86,10 @@ Finally, add a new entry in the balenaCloud Device Variables for the application
 Each target address will show up in your Prometheus targets, [http://prometheus-IP/targets](#).
 
 ### Deploy
-Clone this repository, change into the balena-grafana directory and push to your application:
+Clone this repository, change into the balena-prometheus-grafana directory and push to your application:
 
 ```
- $ git clone git@github.com:jtonello/balena-grafana.git
+ $ git clone git@github.com:jtonello/balena-prometheus-grafana.git
  $ cd balena-grafana
  $ balena push <appname>
 ```
