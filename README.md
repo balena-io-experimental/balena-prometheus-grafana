@@ -4,7 +4,7 @@ balenaCloud Prometheus and Grafana
 ### Introduction
 This project creates an application running Prometheus, Grafana and Node Exporter and can self-monitor. To add additional node targets, simply add the _node_exporter_ folder to any other project and add a Device Environment variable via the balenaCloud dashboard to update the _docker-compose.yml_ file, as shown in __Monitor other devices__ below.
 
-![Dashboard](http://tonellolabs.com/grafana_dashboard.png)
+![Dashboard](http://tonellolabs.com/images/grafana_dashboard.png)
 
 
 ```
