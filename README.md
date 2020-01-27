@@ -81,7 +81,7 @@ CMD [ "/usr/bin/node_exporter" ]
 
 Finally, add a new entry in the balenaCloud Device Variables for the application running Prometheus (and Grafana). Add the variable _TARGETS_ and enter values that are the host IP addresses and ports of the devices you want to monitor, such as _10.128.1.134:9100, 10.128.1.211:9100_, etc. Spaces are optional.
 
-![Add a device variable](http://tonellolabs.com/grafana_env_var.png)
+![Add a device variable](http://tonellolabs.com/images/grafana_env_var.png)
 
 Each target address will show up in your Prometheus targets, [http://prometheus-IP/targets](#).
 
