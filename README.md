@@ -9,8 +9,14 @@ This project creates an application running Prometheus, Grafana and Node Exporte
 
 ```
 /balena-prometheus-grafana/
-├── node_exporter
+├── grafana
 │   ├── Dockerfile.template
+│   └── conf
+│         └── dashboard.yml
+│         └── dashboard_node_exporter.json
+│         └── datasources.yml
+├── node_exporter
+│   └── Dockerfile.template
 ├── prometheus
 │   ├── Dockerfile.template
 │   └── prometheus.yml
