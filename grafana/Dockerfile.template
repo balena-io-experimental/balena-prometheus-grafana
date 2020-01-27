@@ -1,0 +1,11 @@
+FROM grafana/grafana
+
+WORKDIR /usr/src/app
+
+COPY ./conf/datasources.yml /etc/grafana/provisioning/datasources/
+
+COPY ./conf/dash* /etc/grafana/provisioning/dashboards/
+
+EXPOSE 3000
+
+CMD [ "/usr/share/grafana/bin/grafana-server", "--homepath=/usr/share/grafana --config=/etc/grafana/grafana.ini --pac]

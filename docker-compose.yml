@@ -12,7 +12,7 @@ services:
       - node_exporter
     container_name: prometheus
   grafana:
-    image: grafana/grafana
+    build: ./grafana
     ports: 
       - "3000:3000"
     networks:

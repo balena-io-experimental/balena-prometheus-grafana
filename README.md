@@ -49,7 +49,7 @@ scrape_configs:
 
 Two networks are used. The _frontend_ network enables external connections to ports 3000, 9090 and 9100 on the Prometheus service to enable requests to and from Grafana (3000), Prometheus (9090) and Node Exporter (9100). The _backend_ network enables the local name resolution of _node_exporter_. However, all networks could be set as _network_mode: host_ for simplicity, and on other devices that aren't resolvable on the Prometheus/Grafana node.
 
-Note that the architecture of Prometheus and Node Exporter are set as an "ARCH" argument defined in each _Dockerfile.template_. This should be updated with the appropriate version for your architecture. RPi 3 requires _armv7_. Pi4 and NUC devices should use _arm64_. 
+Note that the architecture of Prometheus is set as an "ARCH" argument defined in each _Dockerfile.template_. This should be updated with the appropriate version for your architecture. RPi 3 requires _armv7_. Pi4 and NUC devices should use _arm64_. 
 
 ### Monitor other devices
 In order to add monitoring of other devices, add the following to its separate _docker-compose.yml_ file:
@@ -93,12 +93,8 @@ Clone this repository, change into the balena-prometheus-grafana directory and p
  $ cd balena-grafana
  $ balena push <appname>
 ```
-### Configure dashboard
-In order to start viewing system data, log in to the Grafana dashboard at _device-host-ip:3000_ with admin/admin. Set a password. On the main page:
-* Add the datasource "Prometheus" with the path http://prometheus:9090. Click _Test and Save_.
-* When successful, click the + sign and choose "Import". Paste this URL in the _Grafana.com Dashboard_ field: https://grafana.com/grafana/dashboards/11074
-* Give the dashboard a name (if you want to change the default) and In _Prometheus Data Source_, select "Prometheus".
-* Click "Import (Overwrite)"
+### View data in the dashboard
+In order to start viewing system data, log in to the Grafana dashboard at _http<nolink>://device-host-ip:3000_ with admin/admin. Set a password. Since this deployment automatically sets up the Prometheus datasource and the Node Exporter dashboard, you're done. Once you login, you can view graphical data by clicking on the Dashboard menu item and then on "Node Exporter".
 
 ### Helpful references
 * [How to Integrate Grafana with Prometheus for Monitoring](https://www.linuxtechi.com/integrate-grafana-prometheus-monitoring/)
