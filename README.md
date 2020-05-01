@@ -95,7 +95,7 @@ Each target address will show up in your Prometheus targets, [http://prometheus-
 Clone this repository, change into the balena-prometheus-grafana directory and push to your application:
 
 ```
- $ git clone git@github.com:balena-io-examples/balena-prometheus-grafana.git
+ $ git clone git@github.com:balenalabs-incubator/balena-prometheus-grafana.git
  $ cd balena-grafana
  $ balena push <appname>
 ```
