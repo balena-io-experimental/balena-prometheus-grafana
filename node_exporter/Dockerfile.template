@@ -1,7 +1,7 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine
 WORKDIR /app
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories && \
     apk add --no-cache prometheus-node-exporter
 
 # Expose the port Prometheus uses
